@@ -1,0 +1,11 @@
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\bin\Debug\netstandard2.0\UiPath.deps.json
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\bin\Debug\netstandard2.0\UiPath.dll
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\bin\Debug\netstandard2.0\UiPath.pdb
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\bin\Debug\netstandard2.0\System.Activities.dll
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\obj\Debug\netstandard2.0\UiPath.csproj.CoreCompileInputs.cache
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\obj\Debug\netstandard2.0\UiPath.AssemblyInfoInputs.cache
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\obj\Debug\netstandard2.0\UiPath.AssemblyInfo.cs
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\obj\Debug\netstandard2.0\UiPath.csproj.CopyComplete
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\obj\Debug\netstandard2.0\UiPath.dll
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\obj\Debug\netstandard2.0\UiPath.pdb
+C:\Users\Gaston Tan\Desktop\VisualStudio\repos\UiPath\bin\Debug\netstandard2.0\System.Data.DataSetExtensions.dll
