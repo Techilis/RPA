@@ -1,0 +1,1 @@
+start "" /min "C:\Program Files (x86)\UiPath Studio\UiRobot.exe" /file:"%~dp0Main.xml" /input:"{'StartedByTaskScheduler':True}"

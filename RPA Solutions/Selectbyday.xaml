@@ -1,0 +1,138 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Selectbyday" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=Microsoft.VisualBasic, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data.DataSetExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd2="clr-namespace:System.Diagnostics;assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sd3="clr-namespace:System.Drawing;assembly=System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns:si="clr-namespace:System.IO;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sx="clr-namespace:System.Xml;assembly=System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:uc="clr-namespace:UiPath.Core;assembly=UiPath.System.Activities, Version=18.4.2.0, Culture=neutral, PublicKeyToken=null" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="selectedMonthinDateFormat" Type="InArgument(s:DateTime)" />
+    <x:Property Name="selectedYear" Type="InArgument(x:String)" />
+    <x:Property Name="selectedHalf" Type="InArgument(x:String)" />
+    <x:Property Name="lastDay" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="firstDay" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="arrDay" Type="InOutArgument(s:String[])" />
+    <x:Property Name="dayPicked" Type="InOutArgument(ui:GenericValue)" />
+    <x:Property Name="arrDayOut" Type="InOutArgument(s:String[])" />
+    <x:Property Name="dayPicked2" Type="OutArgument(ui:GenericValue)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>860,1542</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Select by day" sap:VirtualizedContainerService.HintSize="820,1502" sap2010:WorkflowViewState.IdRef="Sequence_350">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:GenericValue" Name="counter" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="i" />
+      <Variable x:TypeArguments="x:String" Name="lastNum" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg1:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="464,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_398">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[lastNum]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[DateTime.DaysInMonth(CInt(selectedYear),CInt(selectedMonthinDateFormat.Month)).ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="If selectedHalf = &quot;1H&quot; Then&#xA; firstDay = 1&#xA; lastDay = 14&#xA;Else&#xA; firstDay = 15&#xA; lastDay = lastNum&#xA;End If" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="464,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="lastDay">[lastDay]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="firstDay">[firstDay]</OutArgument>
+        <InArgument x:TypeArguments="ui:GenericValue" x:Key="lastNum">[lastNum]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="selectedHalf">[selectedHalf]</InArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <Assign sap:VirtualizedContainerService.HintSize="464,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_399">
+      <Assign.To>
+        <OutArgument x:TypeArguments="ui:GenericValue">[counter]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="ui:GenericValue">[firstDay]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="464,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_400">
+      <Assign.To>
+        <OutArgument x:TypeArguments="ui:GenericValue">[i]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="ui:GenericValue">[0]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="464,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_401">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:String[]">[arrDay]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:String[]">[New String(lastDay - firstDay){}]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <DoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="464,546" sap2010:WorkflowViewState.IdRef="DoWhile_6" Condition="[counter &lt; lastDay + 1]">
+      <Sequence sap:VirtualizedContainerService.HintSize="264,384" sap2010:WorkflowViewState.IdRef="Sequence_349">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg1:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_402">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[arrDay(i)]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[counter.ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_403">
+          <Assign.To>
+            <OutArgument x:TypeArguments="ui:GenericValue">[i]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="ui:GenericValue">[i + 1]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_404">
+          <Assign.To>
+            <OutArgument x:TypeArguments="ui:GenericValue">[counter]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="ui:GenericValue">[counter + 1]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </Sequence>
+    </DoWhile>
+    <ui:InputDialog DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="464,92" sap2010:WorkflowViewState.IdRef="InputDialog_7" IsPassword="False" Label="Pick a date from the period you chose" Options="[arrDay]" Title="Pick a start date">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="ui:GenericValue">[dayPicked]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <Sequence DisplayName="Second Date" sap:VirtualizedContainerService.HintSize="464,51" sap2010:WorkflowViewState.IdRef="Sequence_364">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg1:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg1:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim num  As Integer = Array.IndexOf(arrDay,dayPicked)-1&#xA;arrDayOut = New String(arrDay.Length-num-2){}&#xA;' Minus 2 because initialize string will add in index 0&#xA;Dim counter As Integer = 0&#xA;For Each i As String In arrDay&#xA; If Array.IndexOf(arrDay,i) &gt; num Then &#xA;  arrDayOut(counter) = i.ToString&#xA;  counter = counter + 1&#xA; End If&#xA;Next" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="314,164" sap2010:WorkflowViewState.IdRef="InvokeCode_4">
+        <ui:InvokeCode.Arguments>
+          <InArgument x:TypeArguments="s:String[]" x:Key="arrDay">[arrDay]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="dayPicked">[dayPicked]</InArgument>
+          <OutArgument x:TypeArguments="s:String[]" x:Key="arrDayOut">[arrDayOut]</OutArgument>
+        </ui:InvokeCode.Arguments>
+      </ui:InvokeCode>
+      <ui:InputDialog DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="314,92" sap2010:WorkflowViewState.IdRef="InputDialog_8" IsPassword="False" Label="[&quot;Pick a end date from the period you chose&quot; + Environment.NewLine + &quot;Start Day selected: &quot; +dayPicked]" Options="[arrDayOut]" Title="Pick a date">
+        <ui:InputDialog.Result>
+          <OutArgument x:TypeArguments="ui:GenericValue">[dayPicked2]</OutArgument>
+        </ui:InputDialog.Result>
+      </ui:InputDialog>
+    </Sequence>
+  </Sequence>
+</Activity>
