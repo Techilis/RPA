@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="376,688.666666666667" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="392,815.333333333333" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
       <x:String>System.Activities</x:String>
@@ -46,7 +46,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Tic Tac Toe" sap:VirtualizedContainerService.HintSize="336,608.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Tic Tac Toe" sap:VirtualizedContainerService.HintSize="352,695.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Default="0" Name="turn" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="win" />
@@ -61,7 +61,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="Initialise board with empty strings&#xD;&#xA;Initialise list with numbers 1 to 9&#xD;&#xA;Convert list to option array&#xD;&#xA;Default draw outcome" DisplayName="Init" sap:VirtualizedContainerService.HintSize="314,164.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <Assign sap:VirtualizedContainerService.HintSize="314,62" sap2010:WorkflowViewState.IdRef="Assign_20">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[turn]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence sap2010:Annotation.AnnotationText="Initialise board with empty strings&#xA;Initialise list with numbers 1 to 9&#xA;Convert list to option array&#xA;Default draw outcome" DisplayName="Init" sap:VirtualizedContainerService.HintSize="314,181.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -121,7 +129,7 @@
         </ui:ForEach>
       </Sequence>
     </Sequence>
-    <While sap2010:Annotation.AnnotationText="Check win condition met -&gt; Check turn -&gt; Input in player, else let computer choose number -&gt; Update board -&gt; Update list (pop) -&gt; Update options -&gt; Check if game over and update win variable" DisplayName="While Game Not Ended" sap:VirtualizedContainerService.HintSize="560.666666666667,2036.66666666667" sap2010:WorkflowViewState.IdRef="While_1">
+    <While sap2010:Annotation.AnnotationText="Check win condition met -&gt; Check turn -&gt; Input in player, else let computer choose number -&gt; Update board -&gt; Update list (pop) -&gt; Update options -&gt; Check if game over and update win variable" DisplayName="While Game Not Ended" sap:VirtualizedContainerService.HintSize="314,181.333333333333" sap2010:WorkflowViewState.IdRef="While_1">
       <While.Variables>
         <Variable x:TypeArguments="x:Int32" Name="choice" />
       </While.Variables>
@@ -274,7 +282,7 @@
               </Sequence>
             </If.Then>
           </If>
-          <If Condition="[board(0) = &quot;  0  &quot; And board(1) = &quot;  0  &quot; And board(2) = &quot;  0  &quot; Or&#xD;&#xA;board(3) = &quot;  0  &quot; And board(4) = &quot;  0  &quot; And board(5) = &quot;  0  &quot; Or&#xD;&#xA;board(6) = &quot;  0  &quot; And board(7) = &quot;  0  &quot; And board(8) = &quot;  0  &quot; Or&#xD;&#xA;board(0) = &quot;  0  &quot; And board(3) = &quot;  0  &quot; And board(6) = &quot;  0  &quot; Or&#xD;&#xA;board(1) = &quot;  0  &quot; And board(4) = &quot;  0  &quot; And board(7) = &quot;  0  &quot; Or&#xD;&#xA;board(2) = &quot;  0  &quot; And board(5) = &quot;  0  &quot; And board(8) = &quot;  0  &quot; Or&#xD;&#xA;board(0) = &quot;  0  &quot; And board(4) = &quot;  0  &quot; And board(8) = &quot;  0  &quot; Or&#xD;&#xA;board(2) = &quot;  0  &quot; And board(4) = &quot;  0  &quot; And board(6) = &quot;  0  &quot;]" DisplayName="Check if computer wins" sap:VirtualizedContainerService.HintSize="490,445.333333333333" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[board(0) = &quot;  0  &quot; And board(1) = &quot;  0  &quot; And board(2) = &quot;  0  &quot; Or&#xA;board(3) = &quot;  0  &quot; And board(4) = &quot;  0  &quot; And board(5) = &quot;  0  &quot; Or&#xA;board(6) = &quot;  0  &quot; And board(7) = &quot;  0  &quot; And board(8) = &quot;  0  &quot; Or&#xA;board(0) = &quot;  0  &quot; And board(3) = &quot;  0  &quot; And board(6) = &quot;  0  &quot; Or&#xA;board(1) = &quot;  0  &quot; And board(4) = &quot;  0  &quot; And board(7) = &quot;  0  &quot; Or&#xA;board(2) = &quot;  0  &quot; And board(5) = &quot;  0  &quot; And board(8) = &quot;  0  &quot; Or&#xA;board(0) = &quot;  0  &quot; And board(4) = &quot;  0  &quot; And board(8) = &quot;  0  &quot; Or&#xA;board(2) = &quot;  0  &quot; And board(4) = &quot;  0  &quot; And board(6) = &quot;  0  &quot;]" DisplayName="Check if computer wins" sap:VirtualizedContainerService.HintSize="490,445.333333333333" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="264,288" sap2010:WorkflowViewState.IdRef="Sequence_10">
                 <sap:WorkflowViewStateService.ViewState>
